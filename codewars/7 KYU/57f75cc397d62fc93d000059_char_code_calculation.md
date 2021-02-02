@@ -1,6 +1,12 @@
 # Problem
 
-## https://www.codewars.com/kata/57f75cc397d62fc93d000059
+## Kyu Rating
+
+7
+
+## Link
+
+https://www.codewars.com/kata/57f75cc397d62fc93d000059
 
 ## Description
 
