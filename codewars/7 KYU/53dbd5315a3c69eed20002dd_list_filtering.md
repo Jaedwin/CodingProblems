@@ -20,7 +20,7 @@ filter_list([1,'a','b',0,15]) == [1,0,15]
 filter_list([1,2,'aasf','1','123',123]) == [1,2,123]
 ```
 
-# Solution
+# Solution (in Ruby)
 
 ```
 def filter_list(l)
