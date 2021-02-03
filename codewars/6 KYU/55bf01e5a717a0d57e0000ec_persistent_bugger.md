@@ -36,6 +36,6 @@ def persistence(n)
 end
 
 def multiply_nums(n)
-  n.to_s.chars.map(&:to_i).reduce(&:*)
+  n.digits.reduce(&:*)
 end
 ```
