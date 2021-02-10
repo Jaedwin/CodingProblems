@@ -85,7 +85,7 @@ def escape(carpark)
   
   return [] if numOfFloors == 1
   
-  # Loop floors 
+  # Traverse down through floors
   carpark.each_with_index do |floor, index|  
   
     floor.each_with_index do |spot, index|
@@ -93,15 +93,16 @@ def escape(carpark)
       stairPos = index if spot == 1
     end
     
+    # Skip floors until on the starting floor
+    next if beginPos.nil?
+    
+    # If on the first floor (last element in the array)
     if (numOfFloors-1 - index).zero?
       puts "#{numOfSpots}, #{beginPos+1}"
       distanceToExit = numOfSpots - (beginPos+1)
       output << 'R' + distanceToExit.abs.to_s unless distanceToExit == 0
       break
     end
-    
-    next if beginPos.nil?
-    next if stairPos.nil?
     
     distanceToMove = beginPos - stairPos
     beginPos = stairPos
