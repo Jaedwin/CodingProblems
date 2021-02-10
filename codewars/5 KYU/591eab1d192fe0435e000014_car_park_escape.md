@@ -78,8 +78,6 @@ def escape(carpark)
   output = []
   beginPos = nil
   stairPos = nil
-  currPos = nil
-  distanceToMove = nil
   
   # Get # of floors
   numOfFloors = carpark.length
@@ -89,12 +87,17 @@ def escape(carpark)
   
   # Loop floors 
   carpark.each_with_index do |floor, index|  
-    break if (numOfFloors-1 - index).zero?
-    
+  
     floor.each_with_index do |spot, index|
       beginPos = index if spot == 2
       stairPos = index if spot == 1
-      currPos = stairPos
+    end
+    
+    if (numOfFloors-1 - index).zero?
+      puts "#{numOfSpots}, #{beginPos+1}"
+      distanceToExit = numOfSpots - (beginPos+1)
+      output << 'R' + distanceToExit.abs.to_s unless distanceToExit == 0
+      break
     end
     
     next if beginPos.nil?
@@ -102,7 +105,7 @@ def escape(carpark)
     
     distanceToMove = beginPos - stairPos
     beginPos = stairPos
-    
+      
     if distanceToMove.positive?
       output += ['L' + distanceToMove.abs.to_s, 'D1']
     elsif distanceToMove.negative?
@@ -111,16 +114,6 @@ def escape(carpark)
       output << "D#{output.pop.split('D').last.to_i + 1}"
     end 
   end
-  
-  # If the start position is the last floor in the array (first floor in the parkade)
-  carpark.last.each_with_index {|spot,index| beginPos = index if spot == 2 } if beginPos.nil?
-  
-  distanceToExit = numOfSpots - (beginPos+1)
-  
-  output << 'R' + distanceToExit.abs.to_s unless distanceToExit == 0
-  
   output
 end
-
-
 ```
