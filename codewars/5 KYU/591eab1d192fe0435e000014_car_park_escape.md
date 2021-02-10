@@ -98,7 +98,6 @@ def escape(carpark)
     
     # If on the first floor (last element in the array)
     if (numOfFloors-1 - index).zero?
-      puts "#{numOfSpots}, #{beginPos+1}"
       distanceToExit = numOfSpots - (beginPos+1)
       output << 'R' + distanceToExit.abs.to_s unless distanceToExit == 0
       break
