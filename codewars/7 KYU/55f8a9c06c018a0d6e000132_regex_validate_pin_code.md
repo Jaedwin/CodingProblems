@@ -19,6 +19,6 @@ If the function is passed a valid PIN string, return true, else return false.
 ## Ruby
 ```ruby
 def validate_pin(pin)
-  !!(pin =~ /^\d{4}$|^\d{6}$/)
+  !!(pin.delete("\n") =~ /^\d{4}$|^\d{6}$/)
 end
 ```
